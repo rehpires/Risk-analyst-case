@@ -190,33 +190,40 @@ Although mostly of the data explorantion and visualization being handle on jupyt
 3.1 **Analyze the data provided and present your conclusions. What
    suspicious behaviors did you find? What led you to this conclusion?** 
    
-Solution: My conclusion rely mostly on data analysis and visualization.
+Solution: My conclusion rely mostly on data analysis and visualization combined with previous statistical knowledge. The topics displays patters encountered and conclusions made.
  - The most of the transactions occur 12pm to 09pm, following a histogram graph analysis.
+ - Between Friday, Saturday and Sunday mostly transactions occur. But the histogram shows that the distribution of fraud activity is well patterned during the whole week days, while the normal transactions display a mostly random distribution.
+ - The benford's Law display that the whole dataset mostly represents a normal (real) dataset distribution, where the values of low numers (1 to 5) is close to the recommendation. When checking only the chargeback data, the benford's Law is not followed, which reinforces the fraud behaviour.
  - Fraudulent transactions are far away from a normal distribution, which implies that mostly the variance of this cases are high.
  - Normal transactions rely something close to a qui-quadratic distribution, displaying a very usual patern, where most of the transactions are concentrated on the left side on the data, with a visible assymetric schema.
  - By comparing two box-plots, is seen that the normal transactions have the last quartile around $1700 and fraud transactions have the last quartile around $2200. Also, the median of frauds stays above the thid quartile of a normal transaction. As seen on the graph, mostly high value normal transactions are outliers that occur after $1700, which indicates that from this value, it's likely to pay attention on the transaction details and may run a security check.
  - When checking the cards that already had the fraud label, it's seen that chargebacks may occur in a short period of time, and in the same merchant, but it does't follow a rule. It the dataset, at least 109 cards had a fraud transaction with more than one transaction on it's history, which means that sometimes even after one simple transaction, the fraud may occur on the second one.
  - Also checking the user with a high number of transactions that had at least one fraudulent chargeback, it seen that the practice repeats frequently. The highest account had 31 transactions with 25 labeled as fraud, which represents 80% of his transactions, and some other users had 100% of their transactions labeled as fraud.
  - Almost the same can be said about the card numbers, were 274 cards had at least a fraud flag on it. The highest one had 10 transactions and 10 fraud flags on it.
- - By the merchant side, the problem need to be investigated too, since there's always a chance of this frauds being related somehow by a bad practice of the business or even a fraud attempt by both parts (merchant and card-holder). 82 merchants had endured a chargeback process, with some of them having 100% of their transactions being labeled as fraud. This turn on a red light for them, leading to possible contact and investigation on possible problems or criminal activity.
- - Sometime the user does more than one purchase at a fast rate (in this case, 3 minutes was the cut), which is a important alert of fraud. For this situation, on SQL a query was set to define cards that had more than one transaction in a the set period of time and the query returned with  many card numbers that fits the fraud description.
+ - By the merchant side, the problem need to be investigated too, since there's always a chance of this frauds being related somehow by a bad practice of the business or even a fraud attempt by both parts (merchant and card-holder). 82 merchants had endured a chargeback process, with some of them having 100% of their transactions being labeled as fraud. This turn on a red light for them, leading to possible contact and investigation on possible problems or criminal activity. Some merchants may be using something as a "ghost customer"to create a fake invoice process and do money laundry.
+ - Sometime the user does more than one purchase at a fast rate (in this case, 3 minutes was the cut), which is a important alert of fraud. For this situation, on SQL a query was set to define cards that had more than one transaction in a the set period of time and the query returned with  many card numbers that fits the fraud description. This type of handler is known as rule-based model.
 
 3.2 **In addition to the spreadsheet data, what other data would you consider to find patterns
 of possible fraudulent behavior?** 
- Some suiting data could be linked with the foreigh keys provided on the variables already presented at the transaction_sample, such as:
+ All the data related to consumer fraud, or any suiting data could be linked with the foreigh keys provided on the variables already presented at the transaction_sample, such as:
 
  -  **Address Verification System for online purchases**
- - **Which card network**
+ - **Which card network is responsible for the card**
+ - **The credict card limit, and if the usage always follows the limit patter**
  -  **IP address of a card holder**
  - **Cardholder e-mail used on the purchase**
  - **Cardholder e-mail used on the issuer bank**
- -  **Cardholder gender, since models point out that males are more likely to commit fraud**
+ -  **Cardholder gender, since models mostly point out that males are more likely to commit fraud**
+ -  **Cardholder clusters, such as age or city**
+ - **Cardholder Not due to payments, that occurred more than once**
  - **Merchant Information - Type of business and size**
  - **Chargeback code - for the payment system**
  - **Purchase processing details - Security check**
- - **Product details**
-
+ - **Product details or SKU, to check if the product indeed exists**
 
 3.3 **Considering your conclusions, what would you further suggest in order to prevent frauds and/or chargebacks?**
-Using machine learning techniques along with accurated data analysis, can lead to less fraud and better risk assessment. Mostly models related to random-forrest and gradient optimization can deal mostly fraud if fed with the proper labelled data and supervised by someone who knows to to handle it outputs.
+In the fraud management maturity, using constant training, having a full time team assessing fraud transactions, audicting the framework for fraud and having constact connection on the fraud detection team with other areas may provide a good approach to react on fraud, prevent and predict possible future frauds.
+
+Using machine learning techniques along with accurated data analysis, can lead to less fraud and better risk assessment. Mostly models related to random-forrest and gradient optimization can deal mostly fraud if fed with the proper labelled data and supervised by someone who knows to to handle it outputs. In this case, I would consider using a Anomaly Detection Algorithms, since others data sources had a good result with this type of algorithm on credict card fraud assessment.
+
 Also, providing a better security system along with proper usage can lead merchants to better handle struggles with chargeback. It's less likely to occuor a non-fraudulent chargeback when all the proper care is taken by the merchant and the conflict resolution is handle before the necessity of a chargeback appears.
