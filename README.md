@@ -1,4 +1,4 @@
 # Risk-analyst-case
 Risk Analyst case - Cloudwalk
 
-Please reffer to the "Resolution description.md"
+Please reffer to the "Solution description.md"
