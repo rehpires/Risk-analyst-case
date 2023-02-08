@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b68bb9-33c6-4ebf-b270-b4bd651a9e6f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resolution description.md" beforeDir="false" afterPath="$PROJECT_DIR$/Resolution description.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Transactional data.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Transactional data.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transactional-sample.sql" beforeDir="false" afterPath="$PROJECT_DIR$/transactional-sample.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +29,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [

@@ -21,14 +21,14 @@ WHERE has_cbk IN ('TRUE', 'FALSE');
 ALTER TABLE transactional_sample
 MODIFY has_cbk TINYINT;
 
-SELECT * from transactional_sample;
+-- Transactions above a threshold, held by average + 3 * stdev
+SELECT * 
+FROM transactional_sample
+WHERE transaction_amount > (SELECT AVG(transaction_amount) + (3 * STDDEV(transaction_amount)) 
+                            FROM transactional_sample);
 
-SELECT
-    SUM(CASE WHEN has_cbk = 0 THEN 1 ELSE 0 END) AS count_0,
-    SUM(CASE WHEN has_cbk = 1 THEN 1 ELSE 0 END) AS count_1
-FROM transactional_sample;
-
-SELECT card_number, transaction_amount, transaction_id, merchant_id 
+-- Transactions with less than 3 minutes from the same card
+SELECT card_number, transaction_amount, transaction_id, merchant_id, has_cbk 
 FROM transactional_sample 
 WHERE card_number IN (SELECT card_number 
                       FROM transactional_sample 
@@ -36,3 +36,13 @@ WHERE card_number IN (SELECT card_number
                       HAVING COUNT(*) > 1 
                       AND TIMESTAMPDIFF(MINUTE, MAX(transaction_date), MIN(transaction_date)) < 3) 
 ORDER BY card_number;
+
+-- Transactions with less than 3 minutes from the same user_id
+SELECT user_id, transaction_amount, transaction_id, merchant_id, has_cbk 
+FROM transactional_sample 
+WHERE user_id IN (SELECT user_id 
+                      FROM transactional_sample 
+                      GROUP BY user_id 
+                      HAVING COUNT(*) > 1 
+                      AND TIMESTAMPDIFF(MINUTE, MAX(transaction_date), MIN(transaction_date)) < 3) 
+ORDER BY user_id;
