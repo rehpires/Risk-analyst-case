@@ -18,6 +18,10 @@ UPDATE transactional_sample
 SET has_cbk = CASE WHEN has_cbk = 'TRUE' THEN 1 ELSE 0 END
 WHERE has_cbk IN ('TRUE', 'FALSE');
 
+UPDATE transactional_sample
+SET device_id = CASE WHEN device_id = '' THEN NULL END
+WHERE device_id IN ('');
+
 ALTER TABLE transactional_sample
 MODIFY has_cbk TINYINT;
 
@@ -26,6 +30,14 @@ SELECT *
 FROM transactional_sample
 WHERE transaction_amount > (SELECT AVG(transaction_amount) + (3 * STDDEV(transaction_amount)) 
                             FROM transactional_sample);
+                        
+-- Transactions above a threshold, held by average + 3 * stdev AND without the device_id
+SELECT card_number, transaction_amount, transaction_id, merchant_id, has_cbk 
+FROM transactional_sample
+WHERE device_id IS NULL
+  AND transaction_amount > 
+    (SELECT AVG(transaction_amount) + (3 * STDDEV(transaction_amount)) 
+     FROM transactional_sample);
 
 -- Transactions with less than 3 minutes from the same card
 SELECT card_number, transaction_amount, transaction_id, merchant_id, has_cbk 
