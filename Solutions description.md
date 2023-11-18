@@ -1,9 +1,9 @@
 # Risk analyst – Position case
 
 Olá, tudo bem?
-Me chamo Renato Pires e sou candidato a vaga de **Risk Analyst** da **CloudWalk**.
+Me chamo Renato Pires.
 
-Nesse espaço, detalho as soluções e análises utilizadas no case proposto. Seguindo um gosto pessoal, procuro sempre abordar meus trabalhos de forma detalhada, explorando opções e sendo o mais assertivo possível e valorizando as ferramentas disponíveis que encontro e confio. Dessa forma, decidi me aperfeiçoar nos conhecimentos e tecnicas requeridas, por meio de alguns cursos da Udemy. Acredito ser importante lista-los para complementar minha jornada:
+Nesse espaço, detalho as soluções e análises utilizadas num case proposto sobre Risk Analysis. Seguindo um gosto pessoal, procuro sempre abordar meus trabalhos de forma detalhada, explorando opções e sendo o mais assertivo possível e valorizando as ferramentas disponíveis que encontro e confio. Dessa forma, decidi me aperfeiçoar nos conhecimentos e tecnicas requeridas, por meio de alguns cursos da Udemy. Acredito ser importante lista-los para complementar a jornada:
 
  - [Payment Risk 101](https://www.udemy.com/course/payment-and-payment-fraud/)
  - [Fraud Prevention, Dispute Resolution and PCI-DSS Masterclass](https://www.udemy.com/course/fraud-prevention/)
